@@ -1,5 +1,7 @@
 from error import ColorError, InvalidFEN, InvalidNotation
-from piece import abbr2piece
+from flyweight import PieceCreator
+
+piece_creator = PieceCreator()
 
 
 class Board(object):
@@ -67,7 +69,7 @@ class Board(object):
             if len(fen_placement_row) != 8:
                 raise InvalidFEN("Rank must have eight locations")
             for file, letter in zip(self.files, fen_placement_row):
-                piece = abbr2piece(letter)
+                piece = piece_creator(letter)
                 if piece is None:
                     self[file + rank] = piece
                 else:

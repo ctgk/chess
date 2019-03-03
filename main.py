@@ -1,10 +1,10 @@
 import tkinter as tk
 from gui import GUI
-from chess import Chess
+from singleton import Singleton
 
 
 def main():
-    chess = Chess()
+    chess = Singleton().chess
 
     root = tk.Tk()
     root.title("Chess")
